@@ -27,6 +27,29 @@ public class Usuario {
     Scanner entrada = new Scanner(System.in);
     public boolean cadastrarConta() {
         System.out.println("==== Faça o seu Cadastro ====");
+        System.out.println("Nome: ");
+        do {
+            nome = entrada.nextLine();
+            if (nome.isEmpty()) {
+                System.out.println("Entrada inválida! Tente novamente.");
+            }
+        } while (nome.isEmpty());
+
+        System.out.println("Endereço: ");
+        do {
+            endereço = entrada.nextLine();
+            if (endereço.isEmpty()) {
+                System.out.println("Entrada inválida! Tente novamente.");
+            }
+        } while (endereço.isEmpty());
+        System.out.println("Telefone: ");
+        do {
+            telefone = entrada.nextLine();
+            if (telefone.isEmpty()) {
+                System.out.println("Entrada inválida! Tente novamente.");
+            }
+        } while (telefone.isEmpty());
+        
         System.out.println("E-mail: ");
         do {
             email = entrada.nextLine();

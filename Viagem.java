@@ -10,22 +10,19 @@ import java.util.ArrayList;
 public class Viagem {
     
     private int vagasDisp;
-    private double raio;
     private Local partida;
     private Local destino;
-    private Local localatual;
     private ArrayList<Local> trajeto;
     private Motorista motorista;
     private ArrayList<Passageiro> passageiros;
     private ArrayList<Avaliacao> avaliacoes;
     
-    public Viagem(int vagasDisp, Local partida, Local destino, Motorista motorista) {
-        this.vagasDisp = vagasDisp;
-        this.raio = raio;       
+    public Viagem(int vagasDisp, Local partida, Local destino, Motorista motorista, ArrayList<Local> trajeto) {
+        this.vagasDisp = vagasDisp;     
         this.partida = partida;
         this.destino = destino;
         this.motorista = motorista;
-        trajeto = new ArrayList<>();
+        this.trajeto = trajeto;
         passageiros = new ArrayList<>();
         avaliacoes = new ArrayList<>();
     }
@@ -38,9 +35,14 @@ public class Viagem {
     }
     
     public boolean estaContido(Local local) {
-        double distancia = localatual.distancia(local);
-        return distancia <= raio;
+        double raio = 2.0;
+        
+        for(Local ponto : trajeto) {
+            if(ponto.distancia(local) <= raio) {
+                return true;
+            }
+        }
+        return false;
     }
-    
 }
 
