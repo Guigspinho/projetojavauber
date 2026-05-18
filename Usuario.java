@@ -22,10 +22,13 @@ public class Usuario {
         this.endereço = endereço;
         this.telefone = telefone;
     }
+
+    public Usuario() {
+        
+    }
     
-    //Validação de entrada vazia com .isEmpty()
     Scanner entrada = new Scanner(System.in);
-    public boolean cadastrarConta() {
+    public boolean cadastrarConta(Scanner entrada) {
         System.out.println("==== Faça o seu Cadastro ====");
         System.out.println("Nome: ");
         do {
@@ -49,7 +52,7 @@ public class Usuario {
                 System.out.println("Entrada inválida! Tente novamente.");
             }
         } while (telefone.isEmpty());
-        
+
         System.out.println("E-mail: ");
         do {
             email = entrada.nextLine();
@@ -69,7 +72,18 @@ public class Usuario {
         } while (senha.isEmpty());
         
         System.out.println("==== Cadastro Realizado com Sucesso ====");
+
         return true;
+    }
+
+    public boolean logarConta(String email, String senha) {
+        if (this.email.equals(email) && this.senha.equals(senha)) {
+            System.out.println("Login bem-sucedido!");
+            return true;
+        } else {
+            System.out.println("Email ou senha incorretos. Tente novamente.");
+            return false;
+        }
     }
 }
     

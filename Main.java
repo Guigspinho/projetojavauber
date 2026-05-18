@@ -10,12 +10,9 @@ public class Main
 {
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
-
-		Motorista motorista = new Motorista("email", "senha", "nome", "endereço", "telefone");
-		motorista.cadastrarViagem(entrada);
-
-
-
+		Usuario usuario = new Usuario();
+		usuario.cadastrarConta(entrada);
+		usuario.logarConta(entrada);
 
 		entrada.close();
 	}
