@@ -1,0 +1,18 @@
+/*
+Participantes
+Nome: Guilherme Gomes Pinho - RA: 10755529
+Nome: Lukas Barone Sussa - RA: 10753291
+Nome: Ryan Silva de Sousa - RA: 10757255
+*/
+
+public class Passageiro extends Usuario {
+    
+    public Passageiro(String email, String senha, String nome, String endereço, String telefone) {
+        super(email, senha, nome, endereço, telefone);
+    }
+    
+    public List<Viagem> buscarCarona() {
+        List<Viagem> viagensProximas = new ArrayList<>();
+        for
+        return ;
+    }
