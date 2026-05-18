@@ -5,6 +5,8 @@ Nome: Lukas Barone Sussa - RA: 10753291
 Nome: Ryan Silva de Sousa - RA: 10757255
 */
 
+import java.util.ArrayList;
+
 public class Viagem {
     
     private int vagasDisp;
@@ -39,8 +41,6 @@ public class Viagem {
         double distancia = localatual.distancia(local);
         return distancia <= raio;
     }
-    
-    public
     
 }
 

@@ -43,3 +43,4 @@ public class Local {
     public void setY(int y) {
         this.y = y; 
     }
+}

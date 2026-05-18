@@ -11,8 +11,5 @@ public class Passageiro extends Usuario {
         super(email, senha, nome, endereço, telefone);
     }
     
-    public List<Viagem> buscarCarona() {
-        List<Viagem> viagensProximas = new ArrayList<>();
-        for
-        return ;
-    }
+    
+}

@@ -11,6 +11,5 @@ public class Motorista extends Usuario {
         super(email, senha, nome, endereço, telefone);
     }
     
-    public double consultarPassageiros() {
-        return ;
-    }
+    
+}
