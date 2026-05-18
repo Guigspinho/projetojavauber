@@ -14,6 +14,7 @@ public class Usuario {
     private String endereço;
     private String telefone;
     
+
     public Usuario(String email, String senha, String nome, String endereço, String telefone) {
         this.email = email;
         this.senha = senha;
@@ -44,8 +45,8 @@ public class Usuario {
             }
         } while (senha.isEmpty());
         
-        return true;
         System.out.println("==== Cadastro Realizado com Sucesso ====");
+        return true;
     }
 }
     
