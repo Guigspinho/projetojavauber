@@ -6,13 +6,15 @@ Nome: Ryan Silva de Sousa - RA: 10757255
 */
 
 import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Sistema {
     Scanner entrada = new Scanner(System.in);
     int selecao_menu;
-    private Usuario usuario;
+    private ArrayList<Usuario> usuarios;
 
     public Sistema() {
-        usuario = new Usuario();
+        usuarios = new ArrayList<>();
     }
 
     public void exibirMenuEntrada() {
@@ -52,19 +54,22 @@ public class Sistema {
         System.out.println("\n==== Faça o seu Cadastro ====");
 
         System.out.print("Nome: ");
-        usuario.setNome(validarCampo(entrada.nextLine()));
+        String nome = validarCampo(entrada.nextLine());
 
         System.out.print("Endereço: ");
-        usuario.setEndereco(validarCampo(entrada.nextLine()));
+        String endereco = validarCampo(entrada.nextLine());
 
         System.out.print("Telefone: ");
-        usuario.setTelefone(validarCampo(entrada.nextLine()));
+        String telefone = validarCampo(entrada.nextLine());
 
         System.out.print("E-mail: ");
-        usuario.setEmail(validarCampo(entrada.nextLine()));
+        String email = validarCampo(entrada.nextLine());
         
         System.out.print("Senha: ");
-        usuario.setSenha(validarCampo(entrada.nextLine()));
+        String senha = validarCampo(entrada.nextLine());
+
+        Usuario usuario = new Usuario(email, senha, nome, endereco, telefone);
+        usuarios.add(usuario);
         
         System.out.println("\n==== Cadastro Realizado com Sucesso ====\n");
 
@@ -78,13 +83,15 @@ public class Sistema {
         System.out.print("Senha: ");
         String senha = entrada.nextLine();
 
-        if (this.usuario.getEmail().equals(email) && this.usuario.getSenha().equals(senha)) {
-            System.out.println("==== Login Realizado com Sucesso ====\n");
-            return true;
-        } else {
-            System.out.println("\nEmail ou senha incorretos. Tente novamente.\n");
-            return false;
+        for (Usuario usuario : usuarios) {
+            if (usuario.getEmail().equals(email) && usuario.getSenha().equals(senha)) {
+                System.out.println("==== Login Realizado com Sucesso ====\n");
+                return true;
+            }
         }
+
+        System.out.println("\nEmail ou senha incorretos. Tente novamente.\n");
+        return false;
     }
 
     public String validarCampo(String campo) {
@@ -93,5 +100,10 @@ public class Sistema {
             campo = entrada.nextLine();
         }
         return campo;
+    }
+
+    // Método para adicionar usuários manualmente na lista do sistema para o banco de dados
+    public void adicionarUsuario(Usuario usuario) {
+        usuarios.add(usuario);
     }
 }

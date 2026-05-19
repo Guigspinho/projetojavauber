@@ -10,7 +10,7 @@ public class Usuario {
     private String nome;
     private String endereco;
     private String telefone;
-    
+
 
     public Usuario(String email, String senha, String nome, String endereco, String telefone) {
         this.email = email;
