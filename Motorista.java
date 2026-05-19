@@ -11,8 +11,8 @@ public class Motorista extends Usuario {
 
     ArrayList<Viagem> viagens = new ArrayList<>();
     
-    public Motorista(String email, String senha, String nome, String endereço, String telefone) {
-        super(email, senha, nome, endereço, telefone);
+    public Motorista(String email, String senha, String nome, String endereço, String telefone, int tipoConta) {
+        super(email, senha, nome, endereço, telefone, tipoConta);
         viagens = new ArrayList<>();
     }
     

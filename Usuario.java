@@ -10,14 +10,16 @@ public class Usuario {
     private String nome;
     private String endereco;
     private String telefone;
+    private int tipoConta; // 1 - Passageiro, 2 - Motorista
 
 
-    public Usuario(String email, String senha, String nome, String endereco, String telefone) {
+    public Usuario(String email, String senha, String nome, String endereco, String telefone, int tipoConta) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
+        this.tipoConta = tipoConta;
     }
 
     public Usuario() {
@@ -62,6 +64,14 @@ public class Usuario {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getTipoConta() {
+        return tipoConta;
+    }
+
+    public void setTipoConta(int tipoConta) {
+        this.tipoConta = tipoConta;
     }
 }
     
