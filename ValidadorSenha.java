@@ -1,9 +1,10 @@
 import java.util.Scanner;
 public class ValidadorSenha{
-
-    public static boolean validarSenha(String senha) {
+    public static void main(String[] args){
+        Scanner validar = new Scanner(System.in);
 
         //criação das variaveis
+        String senha;
         boolean letraMinuscula;
         boolean letraMaiscula;
         boolean numero;
@@ -15,36 +16,31 @@ public class ValidadorSenha{
         numero = false;
         caracEspecial = false;
 
-        //validacao da quantidade de caracteres
-        if (senha.length() < 8) {
-            return false;
-        }
-
-        //processo de validacao de cada caracter inserido na senha
-        for (int i = 0; i < senha.length(); i++) {
-            char c = senha.charAt(i);
-            if (c >= 'a' && c <= 'z') {
-                letraMinuscula = true;
-            } else if (c >= 'A' && c <= 'Z') {
-                letraMaiscula = true;
-            } else if (c >= '0' && c <= '9') {
-                numero = true;
-            } else {
-                caracEspecial = true;
-            }
-        }
-        return letraMinuscula && letraMaiscula && numero && caracEspecial;
-    }
-
-    public static void main(String[] args){
-        Scanner validar = new Scanner(System.in);
-
-        String senha;
-
+        //entrada 
         System.out.print("Digite sua senha: ");
         senha = validar.nextLine();
 
-        if(validarSenha(senha)){
+        //condicional
+        if (senha.length() < 8) {
+            System.out.print("Senha inválida!");
+           //else usado para poder fazer a verificação de caracteres da senha 
+        } else {
+            for (int i = 0; i < senha.length(); i++) {
+                char c = senha.charAt(i);
+                if (c >= 'a' && c <= 'z') {
+                    letraMinuscula = true;
+                } else if (c >= 'A' && c <= 'Z') {
+                    letraMaiscula = true;
+                } else if (c >= '0' && c <= '9') {
+                    numero = true;
+                } else {
+                    caracEspecial = true;
+                }
+            }
+        }
+
+        //condiçao final usando o que seria um return de um método estático, avaliando cada variavel utilizada
+        if(letraMinuscula && letraMaiscula && numero && caracEspecial){
             System.out.println("Senha cadastrada!");
         } else{
             System.out.println("Senha incorreta!");
