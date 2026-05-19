@@ -4,49 +4,64 @@ Nome: Guilherme Gomes Pinho - RA: 10755529
 Nome: Lukas Barone Sussa - RA: 10753291
 Nome: Ryan Silva de Sousa - RA: 10757255
 */
-
-import java.util.Scanner;
-
 public class Usuario {
     private String email;
     private String senha;
     private String nome;
-    private String endereço;
+    private String endereco;
     private String telefone;
     
 
-    public Usuario(String email, String senha, String nome, String endereço, String telefone) {
+    public Usuario(String email, String senha, String nome, String endereco, String telefone) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
-        this.endereço = endereço;
+        this.endereco = endereco;
         this.telefone = telefone;
     }
+
+    public Usuario() {
+        
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
-    //Validação de entrada vazia com .isEmpty()
-    Scanner entrada = new Scanner(System.in);
-    public boolean cadastrarConta() {
-        System.out.println("==== Faça o seu Cadastro ====");
-        System.out.println("E-mail: ");
-        do {
-            email = entrada.nextLine();
-            
-            if (email.isEmpty()) {
-                System.out.println("Entrada inválida! Tente novamente.");
-            }
-        } while (email.isEmpty());
-        
-        System.out.println("Senha: ");
-        do {
-            senha = entrada.nextLine();
-            
-            if (senha.isEmpty()) {
-                System.out.println("Entrada inválida! Tente novamente.");
-            }
-        } while (senha.isEmpty());
-        
-        System.out.println("==== Cadastro Realizado com Sucesso ====");
-        return true;
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+    
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }
     
