@@ -17,7 +17,7 @@ public class Motorista extends Usuario {
     }
     
     public void cadastrarViagem(Scanner entrada) {
-        System.out.println("==== Cadastro de Viagem ====");
+        System.out.println("==== Cadastro de Viagem ====\n");
 
         System.out.println("Quantas vagas estão disponíveis?");
         int vagas = entrada.nextInt();
@@ -28,7 +28,7 @@ public class Motorista extends Usuario {
 
         ArrayList<Local> trajeto = new ArrayList<>();
 
-        System.out.println("Ponto de Partida:");
+        System.out.println("Ponto de Partida:\n");
 
         System.out.println("Digite X:");
         int xPartida = entrada.nextInt();
@@ -38,7 +38,7 @@ public class Motorista extends Usuario {
 
         Local partida = new Local(xPartida, yPartida);
 
-        System.out.println("Ponto de Destino:");
+        System.out.println("Ponto de Destino:\n");
 
         System.out.println("Digite X:");
         int xDestino = entrada.nextInt();
@@ -50,7 +50,7 @@ public class Motorista extends Usuario {
 
         trajeto.add(partida);
 
-        System.out.println("Por quantos pontos a viagem irá passar? (Descarte o ponto de partida e o ponto de destino)");
+        System.out.println("Por quantos pontos a viagem irá passar? (Descarte o ponto de partida e o ponto de destino)\n");
         int quantidade = entrada.nextInt();
 
         for(int i = 0; i < quantidade; i++) {

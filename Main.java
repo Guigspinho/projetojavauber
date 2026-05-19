@@ -10,9 +10,9 @@ public class Main
 {
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
-		Usuario usuario = new Usuario();
-		usuario.cadastrarConta(entrada);
-		usuario.logarConta(entrada);
+		Sistema sistema = new Sistema();
+		sistema.exibirMenuEntrada();
+
 
 		entrada.close();
 	}
