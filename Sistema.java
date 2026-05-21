@@ -11,9 +11,11 @@ import java.util.ArrayList;
 public class Sistema {
     Scanner entrada = new Scanner(System.in);
     private ArrayList<Usuario> usuarios;
+    private ArrayList<Viagem> viagens;
 
     public Sistema() {
         usuarios = new ArrayList<>();
+        viagens = new ArrayList<>();
     }
 
 
@@ -45,7 +47,7 @@ public class Sistema {
                         if (usuarioLogado.getTipoConta() ==1) {
                             exibirMenuPassageiro(entrada);
                         } else {
-                            exibirMenuMotorista(entrada);
+                            exibirMenuMotorista(entrada, (Motorista) usuarioLogado);
                         }
                     }
                     break;
@@ -92,7 +94,7 @@ public class Sistema {
         } while (selecao_menu != 3);
     }
 
-    public void exibirMenuMotorista(Scanner entrada) {
+    public void exibirMenuMotorista(Scanner entrada, Motorista motoristaLogado) {
         int selecao_menu;
         do {
             System.out.println("=== CarONE-M: Viagens compartilhadas (Motorista) ===");
@@ -111,7 +113,7 @@ public class Sistema {
 
             switch (selecao_menu) {
                 case 1:
-                    cadastrarViagem(entrada);
+                    registrarViagem(entrada, motoristaLogado);
                     break;
                 case 2:
                     confirmarCarona(entrada);
@@ -202,8 +204,16 @@ public class Sistema {
     
     
     /// MÉTODOS DE MOTORISTA
+        // Cadastrar todas as viagens no sistema
+    public void registrarViagem(Scanner entrada, Motorista motorista) {
+        Viagem viagem = motorista.cadastrarViagem(entrada);
+        if (viagem != null) {
+            viagens.add(viagem);
+        }
+    }
 
-
+    
+    
     // Método para adicionar usuários manualmente na lista do sistema para o banco de dados
     public void adicionarUsuario(Usuario usuario) {
         usuarios.add(usuario);
@@ -216,10 +226,6 @@ public class Sistema {
     }
 
     public void avaliarViagens(Scanner entrada) {
-
-    }
-
-    public void cadastrarViagem(Scanner entrada) {
 
     }
 

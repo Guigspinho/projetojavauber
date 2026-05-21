@@ -9,21 +9,21 @@ import java.util.Scanner;
 
 public class Motorista extends Usuario {
 
-    ArrayList<Viagem> viagens = new ArrayList<>();
+    private ArrayList<Viagem> viagensMotorista = new ArrayList<>();
     
     public Motorista(String email, String senha, String nome, String endereço, String telefone, int tipoConta) {
         super(email, senha, nome, endereço, telefone, tipoConta);
-        viagens = new ArrayList<>();
+        viagensMotorista = new ArrayList<>();
     }
     
-    public void cadastrarViagem(Scanner entrada) {
+    public Viagem cadastrarViagem(Scanner entrada) {
         System.out.println("==== Cadastro de Viagem ====\n");
 
         System.out.println("Quantas vagas estão disponíveis?");
         int vagas = entrada.nextInt();
         if (vagas <= 0) {
             System.out.println("Número de vagas inválido! A viagem não pode ser cadastrada.");
-            return;
+            return null;
         }
 
         ArrayList<Local> trajeto = new ArrayList<>();
@@ -66,7 +66,8 @@ public class Motorista extends Usuario {
         trajeto.add(destino);
 
         Viagem viagem = new Viagem(vagas, partida, destino, this, trajeto);
-        viagens.add(viagem);
+        viagensMotorista.add(viagem);
         System.out.println("Viagem cadastrada!");
+        return viagem;
     }
 }
