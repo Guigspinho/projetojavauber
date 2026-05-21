@@ -14,22 +14,8 @@ public class Passageiro extends Usuario {
         super(email, senha, nome, endereço, telefone, tipoConta);
     }
     
-    public ArrayList<Viagem> buscarCarona(Scanner entrada) {
-        System.out.println("==== Solicitação de Viagem ====\n");
-        System.out.println("Digite o ponto de partida:");
-        System.out.println("Digite X:");
-        int xPartida = entrada.nextInt();
-        System.out.println("Digite Y:");
-        int yPartida = entrada.nextInt();
-        Local partida = new Local(xPartida, yPartida);
-
-        System.out.println("Digite o ponto de destino:");
-        System.out.println("Digite X:");
-        int xDestino = entrada.nextInt();
-        System.out.println("Digite Y:");
-        int yDestino = entrada.nextInt();
-        Local destino = new Local(xDestino, yDestino);
-        return new ArrayList<>();
+    public ArrayList<Viagem> buscarCarona(Scanner entrada, ArrayList<Viagem> viagens) {
+        return viagens;
     }
     
 }

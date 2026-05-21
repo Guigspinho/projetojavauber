@@ -44,5 +44,13 @@ public class Viagem {
         }
         return false;
     }
+
+    public Local getDestino() {
+        return destino;
+    }
+
+    public Local getPartida() {
+        return partida;
+    }
 }
 

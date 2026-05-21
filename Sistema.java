@@ -45,7 +45,7 @@ public class Sistema {
                     Usuario usuarioLogado = logarConta(entrada);
                     if (usuarioLogado != null) {
                         if (usuarioLogado.getTipoConta() ==1) {
-                            exibirMenuPassageiro(entrada);
+                            exibirMenuPassageiro(entrada, (Passageiro) usuarioLogado);
                         } else {
                             exibirMenuMotorista(entrada, (Motorista) usuarioLogado);
                         }
@@ -61,7 +61,7 @@ public class Sistema {
         } while (selecao_menu != 3);
     }
     
-    public void exibirMenuPassageiro(Scanner entrada) {
+    public void exibirMenuPassageiro(Scanner entrada, Passageiro passageiroLogado) {
         int selecao_menu;
         do {
             System.out.println("=== CarONE-M: Viagens compartilhadas (Passageiro) ===");
@@ -79,7 +79,7 @@ public class Sistema {
 
             switch (selecao_menu) {
                 case 1:
-                    buscarCarona(entrada);
+                    passageiroLogado.buscarCarona(entrada, viagens);
                     break;
                 case 2:
                     avaliarViagens(entrada);
@@ -204,7 +204,7 @@ public class Sistema {
     
     
     /// MÉTODOS DE MOTORISTA
-        // Cadastrar todas as viagens no sistema
+        // Cadastrar viagem na lista de todas as viagens no sistema
     public void registrarViagem(Scanner entrada, Motorista motorista) {
         Viagem viagem = motorista.cadastrarViagem(entrada);
         if (viagem != null) {
@@ -221,9 +221,6 @@ public class Sistema {
 
 
 
-    public void buscarCarona(Scanner entrada) {
-
-    }
 
     public void avaliarViagens(Scanner entrada) {
 
@@ -235,5 +232,9 @@ public class Sistema {
 
     public void listaAvaliacoes(Scanner entrada) {
 
+    }
+
+    public ArrayList<Viagem> getViagens() {
+        return viagens;
     }
 }
