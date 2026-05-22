@@ -69,5 +69,6 @@ public class Motorista extends Usuario {
         viagensMotorista.add(viagem);
         System.out.println("Viagem cadastrada!");
         return viagem;
+
     }
 }

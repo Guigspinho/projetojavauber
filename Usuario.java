@@ -33,5 +33,9 @@ public class Usuario {
     public int getTipoConta() {
         return tipoConta;
     }
+
+    public String getNome() {
+        return nome;
+    }
 }
     

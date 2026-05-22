@@ -201,7 +201,24 @@ public class Sistema {
 
 
     /// MÉTODOS DE PASSAGEIRO
-    
+    public void buscarESelecionarCarona(Passageiro passageiro) {
+        ArrayList<Viagem> viagensEncontradas = passageiro.buscarCarona(entrada, viagens);
+        if (viagensEncontradas.isEmpty()) {
+            System.out.println("Nenhuma viagem encontrada.");
+            return;
+        } else {
+            System.out.println("Viagens encontradas:");
+            for (int i = 0; i < viagensEncontradas.size(); i++) {
+                System.out.println((i + 1) + " - " + viagensEncontradas.get(i).resumoViagem());
+            }
+            System.out.println("Escolha uma viagem (0 para voltar): ");
+            int escolha = entrada.nextInt();
+            if (escolha > 0 && escolha <= viagensEncontradas.size()) {
+                Viagem caronaSelecionada = viagensEncontradas.get(escolha - 1);
+                System.out.println("Carona confirmada para a viagem: " + caronaSelecionada);
+            }
+        }
+    }
     
     /// MÉTODOS DE MOTORISTA
         // Cadastrar viagem na lista de todas as viagens no sistema

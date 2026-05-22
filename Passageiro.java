@@ -15,7 +15,28 @@ public class Passageiro extends Usuario {
     }
     
     public ArrayList<Viagem> buscarCarona(Scanner entrada, ArrayList<Viagem> viagens) {
-        return viagens;
+        ArrayList<Viagem> viagensEncontradas = new ArrayList<>();
+        System.out.println("Ponto de partida:");
+        System.out.println("Digite X:");
+        int pontoPartidaX = entrada.nextInt();
+        System.out.println("Digite Y:");
+        int pontoPartidaY = entrada.nextInt();
+        Local partida = new Local(pontoPartidaX, pontoPartidaY);
+
+        System.out.println("Ponto de destino:");
+        System.out.println("Digite X:");
+        int pontoDestinoX = entrada.nextInt();
+        System.out.println("Digite Y:");
+        int pontoDestinoY = entrada.nextInt();
+        Local destino = new Local(pontoDestinoX, pontoDestinoY);
+
+        for (Viagem viagem : viagens) {
+            if (viagem.estaContido(partida) && viagem.estaContido(destino) && viagem.getVagasDisp() > 0) {
+                viagensEncontradas.add(viagem);
+            }
+        }
+        return viagensEncontradas;
+
     }
     
 }
