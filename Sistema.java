@@ -12,10 +12,12 @@ public class Sistema {
     Scanner entrada = new Scanner(System.in);
     private ArrayList<Usuario> usuarios;
     private ArrayList<Viagem> viagens;
+    
 
     public Sistema() {
         usuarios = new ArrayList<>();
         viagens = new ArrayList<>();
+        bancoDeDados();
     }
 
 
@@ -236,6 +238,14 @@ public class Sistema {
         usuarios.add(usuario);
     }
 
+    public void bancoDeDados() {
+        Motorista m1 = new Motorista("joao@email.com", "123", "João", "Rua A", "1111", 2);
+        Passageiro p1 = new Passageiro("maria@email.com", "456", "Maria", "Rua B", "2222", 1);
+        usuarios.add(m1);
+        usuarios.add(p1);
+
+        
+    }
 
 
 
