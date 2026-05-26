@@ -10,26 +10,35 @@ import java.util.ArrayList;
 
 public class Passageiro extends Usuario {
     
-    public Passageiro(String email, String senha, String nome, String endereço, String telefone, int tipoConta) {
-        super(email, senha, nome, endereço, telefone, tipoConta);
+    public Passageiro(String email, String senha, String nome, String endereço, String telefone) {
+        super(email, senha, nome, endereço, telefone);
     }
     
-    public ArrayList<Viagem> buscarCarona(Scanner entrada) {
-        System.out.println("==== Solicitação de Viagem ====\n");
-        System.out.println("Digite o ponto de partida:");
+    public ArrayList<Viagem> buscarCarona(Scanner entrada, ArrayList<Viagem> viagens) {
+        ArrayList<Viagem> viagensEncontradas = new ArrayList<>();
+        System.out.println("Ponto de partida:");
         System.out.println("Digite X:");
-        int xPartida = entrada.nextInt();
+        int pontoPartidaX = entrada.nextInt();
         System.out.println("Digite Y:");
-        int yPartida = entrada.nextInt();
-        Local partida = new Local(xPartida, yPartida);
+        int pontoPartidaY = entrada.nextInt();
+        Local partida = new Local(pontoPartidaX, pontoPartidaY);
 
-        System.out.println("Digite o ponto de destino:");
+        System.out.println("Ponto de destino:");
         System.out.println("Digite X:");
-        int xDestino = entrada.nextInt();
+        int pontoDestinoX = entrada.nextInt();
         System.out.println("Digite Y:");
-        int yDestino = entrada.nextInt();
-        Local destino = new Local(xDestino, yDestino);
-        return new ArrayList<>();
+        int pontoDestinoY = entrada.nextInt();
+        Local destino = new Local(pontoDestinoX, pontoDestinoY);
+
+        for (Viagem viagem : viagens) {
+            if (viagem.estaContido(partida) && viagem.estaContido(destino) && viagem.getVagasDisp() > 0) {
+                viagensEncontradas.add(viagem);
+            }
+        }
+        return viagensEncontradas;
+
     }
+
+    
     
 }

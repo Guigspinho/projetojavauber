@@ -44,5 +44,26 @@ public class Viagem {
         }
         return false;
     }
+
+    public String resumoViagem() {
+        return  "----------------------------------\n" +
+                "Motorista: " + motorista.getNome() +  "\n" +
+                "Partida: (" + partida.getX() + ", " + partida.getY() + ")" + 
+                "Destino: (" + destino.getX() + ", " + destino.getY() + ")" + 
+                "Vagas Disponíveis: " + vagasDisp;
+    }
+
+    
+    public Local getDestino() {
+        return destino;
+    }
+
+    public Local getPartida() {
+        return partida;
+    }
+
+    public int getVagasDisp() {
+        return vagasDisp;
+    }
 }
 

@@ -10,10 +10,18 @@ public class Main
 {
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
-		Sistema sistema = new Sistema();
-		sistema.exibirMenuEntrada();
+		GerenciadorUsuario gerUsuarios = new GerenciadorUsuario();
+		GerenciadorViagem gerViagens = new GerenciadorViagem();
+
+		Menu menu = new Menu(gerUsuarios, gerViagens);
+		menu.exibirMenuEntrada();
 
 
 		entrada.close();
+
+
+		Motorista m1 = new Motorista("joao@email.com", "123", "João", "Rua A", "1111");
+        Passageiro p1 = new Passageiro("maria@email.com", "456", "Maria", "Rua B", "2222");
+
 	}
 }
