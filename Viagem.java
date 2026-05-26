@@ -46,10 +46,10 @@ public class Viagem {
     }
 
     public String resumoViagem() {
-        return  "----------------------------------\n" +
+        return
                 "Motorista: " + motorista.getNome() +  "\n" +
-                "Partida: (" + partida.getX() + ", " + partida.getY() + ")" + 
-                "Destino: (" + destino.getX() + ", " + destino.getY() + ")" + 
+                "Partida: " + partida.getNome() + "\n" +
+                "Destino: " + destino.getNome() + "\n" +
                 "Vagas Disponíveis: " + vagasDisp;
     }
 
