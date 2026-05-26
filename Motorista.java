@@ -16,7 +16,7 @@ public class Motorista extends Usuario {
         viagensMotorista = new ArrayList<>();
     }
     
-    public Viagem cadastrarViagem(Scanner entrada) {
+    public Viagem cadastrarViagem(Scanner entrada, ArrayList<Local> locais) {
         System.out.println("==== Cadastro de Viagem ====\n");
 
         System.out.println("Quantas vagas estão disponíveis?");
@@ -30,44 +30,47 @@ public class Motorista extends Usuario {
 
         System.out.println("Ponto de Partida:\n");
 
-        System.out.println("Digite X:");
-        int xPartida = entrada.nextInt();
+        for (int i = 0; i < locais.size(); i++) {
+            System.out.println((i + 1) + " - " + locais.get(i).getNome());
+        }
 
-        System.out.println("Digite Y:");
-        int yPartida = entrada.nextInt();
-
-        Local partida = new Local(xPartida, yPartida);
+        int escolhaPartida = entrada.nextInt();
+        entrada.nextLine();
+        Local partida = locais.get(escolhaPartida - 1);
+        
 
         System.out.println("Ponto de Destino:\n");
 
-        System.out.println("Digite X:");
-        int xDestino = entrada.nextInt();
+        for (int i = 0; i < locais.size(); i++) {
+            System.out.println((i + 1) + " - " + locais.get(i).getNome());
+        }
 
-        System.out.println("Digite Y:");
-        int yDestino = entrada.nextInt();
+        int escolhaDestino = entrada.nextInt();
+        entrada.nextLine();
+        Local destino = locais.get(escolhaDestino - 1);
 
-        Local destino = new Local(xDestino, yDestino);
-
+        
         trajeto.add(partida);
 
         System.out.println("Por quantos pontos a viagem irá passar? (Descarte o ponto de partida e o ponto de destino)\n");
         int quantidade = entrada.nextInt();
+        entrada.nextLine();
 
         for(int i = 0; i < quantidade; i++) {
-
-            System.out.println("Digite X:");
-            int x = entrada.nextInt();
-
-            System.out.println("Digite Y:");
-            int y = entrada.nextInt();
-
-            trajeto.add(new Local(x, y));
+            System.out.println("\nEscolha o ponto " + (i + 1) + " do trajeto:\n");
+            for (int j = 0; j < locais.size(); j++) {
+                System.out.println((j + 1) + " - " + locais.get(j).getNome());
+            }
+            int escolhaPonto = entrada.nextInt();
+            entrada.nextLine();
+            trajeto.add(locais.get(escolhaPonto - 1));
         }
+
         trajeto.add(destino);
 
         Viagem viagem = new Viagem(vagas, partida, destino, this, trajeto);
         viagensMotorista.add(viagem);
-        System.out.println("Viagem cadastrada!");
+        System.out.println("\nViagem cadastrada!\n");
         return viagem;
 
     }

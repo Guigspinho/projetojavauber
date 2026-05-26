@@ -14,21 +14,27 @@ public class Passageiro extends Usuario {
         super(email, senha, nome, endereço, telefone);
     }
     
-    public ArrayList<Viagem> buscarCarona(Scanner entrada, ArrayList<Viagem> viagens) {
+    public ArrayList<Viagem> buscarCarona(Scanner entrada, ArrayList<Viagem> viagens, ArrayList<Local> locais) {
         ArrayList<Viagem> viagensEncontradas = new ArrayList<>();
+
         System.out.println("Ponto de partida:");
-        System.out.println("Digite X:");
-        int pontoPartidaX = entrada.nextInt();
-        System.out.println("Digite Y:");
-        int pontoPartidaY = entrada.nextInt();
-        Local partida = new Local(pontoPartidaX, pontoPartidaY);
+        for (int i = 0; i < locais.size(); i++) {
+            System.out.println((i + 1) + " - " + locais.get(i).getNome());
+        }
+        
+        int escolhaPartida = entrada.nextInt();
+        entrada.nextLine();
+        Local partida = locais.get(escolhaPartida - 1);
+
 
         System.out.println("Ponto de destino:");
-        System.out.println("Digite X:");
-        int pontoDestinoX = entrada.nextInt();
-        System.out.println("Digite Y:");
-        int pontoDestinoY = entrada.nextInt();
-        Local destino = new Local(pontoDestinoX, pontoDestinoY);
+        for (int i = 0; i < locais.size(); i++) {
+            System.out.println((i + 1) + " - " + locais.get(i).getNome());
+        }
+        
+        int escolhaDestino = entrada.nextInt();
+        entrada.nextLine();
+        Local destino = locais.get(escolhaDestino - 1);
 
         for (Viagem viagem : viagens) {
             if (viagem.estaContido(partida) && viagem.estaContido(destino) && viagem.getVagasDisp() > 0) {
