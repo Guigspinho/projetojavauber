@@ -6,6 +6,7 @@ Nome: Ryan Silva de Sousa - RA: 10757255
 */
 
 public class Local {
+    private String nome;
     private int x;
     private int y;
     
@@ -16,7 +17,8 @@ public class Local {
     }
     
     //construtor construtor com parâmetros para criar o objeto já com valores (e simular o banco de dados)
-    public Local(int x, int y) {
+    public Local(String nome, int x, int y) {
+        this.nome = nome;
         this.x = x;
         this.y = y;
     }
@@ -42,5 +44,9 @@ public class Local {
 
     public void setY(int y) {
         this.y = y; 
+    }
+
+    public String getNome() {
+        return nome;
     }
 }

@@ -3,9 +3,19 @@ import java.util.Scanner;
 
 public class GerenciadorViagem {
     private ArrayList<Viagem> viagens;
+    private ArrayList<Local> locais;
 
     public GerenciadorViagem() {
         viagens = new ArrayList<>();
+        locais = new ArrayList<>();
+
+        // Simulando um banco de dados de locais
+        locais.add(new Local("Higienópolis", 0, 0));
+        locais.add(new Local("República", 1, 2));
+        locais.add(new Local("Paulista", 3, 3));
+        locais.add(new Local("Paraíso", 5, 4));
+        locais.add(new Local("Vila Mariana", 6, 4));
+
     }
 
     public void registrarViagem(Scanner entrada, Motorista motorista) {
