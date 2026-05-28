@@ -56,6 +56,9 @@ public class Main
         Local paulista = gerViagens.getLocais().get(2);
         Local paraiso = gerViagens.getLocais().get(3);
         Local vilaMariana = gerViagens.getLocais().get(4);
+        Local liberdade = gerViagens.getLocais().get(5);
+        Local aclimacao = gerViagens.getLocais().get(6);
+        Local santana = gerViagens.getLocais().get(7);
 
         trajeto1.add(higienopolis);
         trajeto1.add(republica);

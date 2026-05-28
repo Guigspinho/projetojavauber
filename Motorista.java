@@ -128,6 +128,30 @@ public class Motorista extends Usuario {
         }
     }
 
+    public void concluirViagem(Scanner entrada) {
+        if (viagensMotorista.isEmpty()) {
+            System.out.println("\nNenhuma viagem cadastrada.\n");
+            return;
+        }
+
+        System.out.println("\n=== Suas Viagens ===");
+        for (int i = 0; i < viagensMotorista.size(); i++) {
+            System.out.println((i + 1) + " - \n"+ viagensMotorista.get(i).resumoViagem());
+        }
+
+        System.out.print("\nEscolha uma viagem: ");
+        int escolha = entrada.nextInt();
+        entrada.nextLine();
+        if (escolha < 1 || escolha > viagensMotorista.size()) {
+            System.out.println("Viagem inválida.");
+            return;
+        }
+
+        Viagem viagemSelecionada = viagensMotorista.get(escolha - 1);
+        viagemSelecionada.setConcluida(true);
+        System.out.println("\nViagem concluída com sucesso!");
+    }
+
 
 
     public ArrayList<Viagem> getViagensMotorista() {

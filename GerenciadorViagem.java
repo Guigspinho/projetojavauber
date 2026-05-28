@@ -21,6 +21,9 @@ public class GerenciadorViagem {
         locais.add(new Local("Paulista", 3, 3));
         locais.add(new Local("Paraíso", 5, 4));
         locais.add(new Local("Vila Mariana", 6, 4));
+        locais.add(new Local("Liberdade", 2, 3));
+        locais.add(new Local("Aclimação", 4, 4));
+        locais.add(new Local("Santana", 1, 6));
 
     }
 

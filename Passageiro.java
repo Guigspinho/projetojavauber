@@ -37,7 +37,7 @@ public class Passageiro extends Usuario {
         Local destino = locais.get(escolhaDestino - 1);
 
         for (Viagem viagem : viagens) {
-            if (viagem.estaContido(partida) && viagem.estaContido(destino) && viagem.getVagasDisp() > 0) {
+            if (viagem.estaContido(partida) && viagem.estaContido(destino) && viagem.getVagasDisp() > 0 && viagem.getConcluida() == false) {
                 viagensEncontradas.add(viagem);
             }
         }
@@ -76,6 +76,10 @@ public class Passageiro extends Usuario {
             return;
         }
         Viagem viagemSelecionada = viagensParticipadas.get(escolha - 1);
+        if (viagemSelecionada.getConcluida() == false) {
+            System.out.println("\nEssa viagem ainda não foi concluída.\n");
+            return;
+        }
 
         System.out.println("\nDigite uma nota (1 a 5):");
         int nota = entrada.nextInt();

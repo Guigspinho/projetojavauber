@@ -17,6 +17,7 @@ public class        Viagem {
     private ArrayList<Passageiro> passageirosPendentes;
     private ArrayList<Passageiro> passageirosConfirmados;
     private ArrayList<Avaliacao> avaliacoes;
+    private boolean concluida;
 
     public Viagem(int vagasDisp, Local partida, Local destino, Motorista motorista, ArrayList<Local> trajeto) {
         this.vagasDisp = vagasDisp;
@@ -27,6 +28,7 @@ public class        Viagem {
         passageirosPendentes = new ArrayList<>();
         passageirosConfirmados = new ArrayList<>();
         avaliacoes = new ArrayList<>();
+        concluida = false;
     }
 
     
@@ -90,6 +92,9 @@ public class        Viagem {
         System.out.println("\nSolicitação rejeitada.\n");
     }
 
+    
+
+
     public Local getDestino() {
         return destino;
     }
@@ -110,6 +115,14 @@ public class        Viagem {
         return passageirosConfirmados;
     }
 
+    public void setConcluida(boolean concluida) {
+        this.concluida = concluida;
+    }
+
+    public boolean getConcluida() {
+        return concluida;
+    }
+    
     
 
 
