@@ -108,23 +108,30 @@ public class GerenciadorUsuario {
         return campo;
     }
 
+    public ArrayList<Motorista> getMotoristas() {
+        return motoristas;
+    }
+
+    public ArrayList<Passageiro> getPassageiros() {
+        return passageiros;
+    }
+
     public double calcularMediaAvaliacoes(Motorista motorista) {
-        ArrayList<Avaliacao> todasAvaliacoes = new ArrayList<>();
-        
-        // Coletar todas as avaliações de todas as viagens do motorista
+        int soma = 0;
+        int quantidade = 0;
+
         for (Viagem viagem : motorista.getViagensMotorista()) {
-            todasAvaliacoes.addAll(viagem.getAvaliacoes());
+            for (Avaliacao avaliacao : viagem.getAvaliacoes()) {
+                soma += avaliacao.getNota();
+                quantidade++;
+            }
         }
-        
-        if (todasAvaliacoes.isEmpty()) {
+
+        if (quantidade == 0) {
             return 0.0;
         }
-    
-        int soma = 0;
-        for (Avaliacao avaliacao : todasAvaliacoes) {
-            soma += avaliacao.getNota();
-        }
-        return (double) soma / todasAvaliacoes.size();
+        return (double) soma / quantidade;
     }
+
 }
 
