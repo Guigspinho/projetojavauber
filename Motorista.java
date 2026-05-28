@@ -75,6 +75,61 @@ public class Motorista extends Usuario {
 
     }
 
+    public void confirmarCarona(Scanner entrada) {
+
+        ArrayList<Viagem> viagensPendentes = new ArrayList<>();
+        ArrayList<Passageiro> passageirosPendentes = new ArrayList<>();
+
+        System.out.println("\n=== Solicitações Pendentes ===");
+        int contador = 1;
+        for (Viagem viagem : viagensMotorista) {
+            for (Passageiro passageiro : viagem.getPassageirosPendentes()) {
+                System.out.println(
+                        contador + " - \n"
+                        + viagem.resumoViagem()
+                        + "\nPassageiro: "
+                        + passageiro.getNome()
+                        + "\n----------------------");
+
+                viagensPendentes.add(viagem);
+                passageirosPendentes.add(passageiro);
+                contador++;
+            }
+        }
+
+        if (viagensPendentes.isEmpty()) {
+            System.out.println("\nNenhuma solicitação pendente.\n");
+            return;
+        }
+
+        System.out.print("\nEscolha uma solicitação: ");
+        int escolha = entrada.nextInt();
+        entrada.nextLine();
+
+        if (escolha < 1 || escolha > viagensPendentes.size()) {
+            System.out.println("Solicitação inválida.");
+            return;
+        }
+
+        Viagem viagemSelecionada = viagensPendentes.get(escolha - 1);
+        Passageiro passageiroSelecionado = passageirosPendentes.get(escolha - 1);
+
+        System.out.println("\n1 - Aceitar\n2 - Rejeitar");
+
+        int opcao = entrada.nextInt();
+        entrada.nextLine();
+
+        if (opcao == 1) {
+            viagemSelecionada.aceitarPassageiro(passageiroSelecionado);
+        } else if (opcao == 2) {
+            viagemSelecionada.rejeitarPassageiro(passageiroSelecionado);
+        } else {
+            System.out.println("Opção inválida.");
+        }
+    }
+
+
+
     public ArrayList<Viagem> getViagensMotorista() {
         return viagensMotorista;
     }

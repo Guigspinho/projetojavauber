@@ -45,6 +45,55 @@ public class Passageiro extends Usuario {
 
     }
 
+    public void avaliarViagens(Scanner entrada, ArrayList<Viagem> viagens) {
+
+        ArrayList<Viagem> viagensParticipadas = new ArrayList<>();
+
+        for (Viagem viagem : viagens) {
+            for (Passageiro passageiro : viagem.getPassageirosConfirmados()) {
+                if (passageiro == this) {
+                viagensParticipadas.add(viagem);
+                }
+            }
+        }
+
+        if (viagensParticipadas.isEmpty()) {
+            System.out.println( "\nVocê não participou de nenhuma viagem.\n");
+            return;
+        }
+
+        System.out.println("\n=== Suas Viagens ===");
+        for (int i = 0; i < viagensParticipadas.size(); i++) {
+        System.out.println((i + 1) + " - " + viagensParticipadas.get(i).resumoViagem());
+        }
+
+        System.out.println("\nEscolha uma viagem:");
+        int escolha = entrada.nextInt();
+        entrada.nextLine();
+
+        if (escolha < 1 || escolha > viagensParticipadas.size()) {
+            System.out.println("Viagem inválida.");
+            return;
+        }
+        Viagem viagemSelecionada = viagensParticipadas.get(escolha - 1);
+
+        System.out.println("\nDigite uma nota (1 a 5):");
+        int nota = entrada.nextInt();
+        entrada.nextLine();
+        while (nota < 1 || nota > 5) {
+            System.out.println("Nota inválida.");
+            nota = entrada.nextInt();
+            entrada.nextLine();
+        }
+
+        System.out.print("Digite um comentário: ");
+        String comentario = entrada.nextLine();
+        Avaliacao avaliacao = new Avaliacao(nota, comentario);
+        viagemSelecionada.getAvaliacoes().add(avaliacao);
+
+        System.out.println("\nAvaliação cadastrada com sucesso!\n");
+    }
+
 
 
 }
