@@ -1,3 +1,9 @@
+/*
+Participantes
+Nome: Guilherme Gomes Pinho - RA: 10755529
+Nome: Lukas Barone Sussa - RA: 10753291
+Nome: Ryan Silva de Sousa - RA: 10757255
+*/
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -44,7 +50,7 @@ public class GerenciadorUsuario {
             Motorista motorista = new Motorista(email, senha, nome, endereco, telefone);
             motoristas.add(motorista);
         }
-        
+
         System.out.println("\n==== Cadastro Realizado com Sucesso ====\n");
 
         return true;
@@ -101,4 +107,31 @@ public class GerenciadorUsuario {
         }
         return campo;
     }
+
+    public ArrayList<Motorista> getMotoristas() {
+        return motoristas;
+    }
+
+    public ArrayList<Passageiro> getPassageiros() {
+        return passageiros;
+    }
+
+    public double calcularMediaAvaliacoes(Motorista motorista) {
+        int soma = 0;
+        int quantidade = 0;
+
+        for (Viagem viagem : motorista.getViagensMotorista()) {
+            for (Avaliacao avaliacao : viagem.getAvaliacoes()) {
+                soma += avaliacao.getNota();
+                quantidade++;
+            }
+        }
+
+        if (quantidade == 0) {
+            return 0.0;
+        }
+        return (double) soma / quantidade;
+    }
+
 }
+

@@ -9,41 +9,35 @@ public class Local {
     private String nome;
     private int x;
     private int y;
-    
-    //construtor vazio caso use entrada de informaçoes
-    public Local() {
-        this.x = 0;
-        this.y = 0;
-    }
-    
+
     //construtor construtor com parâmetros para criar o objeto já com valores (e simular o banco de dados)
     public Local(String nome, int x, int y) {
         this.nome = nome;
         this.x = x;
         this.y = y;
     }
-    
+
     //fórmula para calcular a distancia entre dois pontos
     public double distancia(Local localponto) {
         double soma = Math.pow(localponto.x - this.x, 2) + Math.pow(localponto.y - this.y, 2);
         return Math.sqrt(soma);
     }
-    
-    
-    public int getX() { 
-        return x; 
+
+
+    public int getX() {
+        return x;
     }
 
     public void setX(int x) {
-        this.x = x; 
+        this.x = x;
     }
 
-    public int getY() { 
+    public int getY() {
         return y;
     }
 
     public void setY(int y) {
-        this.y = y; 
+        this.y = y;
     }
 
     public String getNome() {

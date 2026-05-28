@@ -8,35 +8,32 @@ Nome: Ryan Silva de Sousa - RA: 10757255
 import java.util.ArrayList;
 
 public class Viagem {
-    
+
     private int vagasDisp;
     private Local partida;
     private Local destino;
     private ArrayList<Local> trajeto;
     private Motorista motorista;
-    private ArrayList<Passageiro> passageiros;
+    private ArrayList<Passageiro> passageirosPendentes;
+    private ArrayList<Passageiro> passageirosConfirmados;
     private ArrayList<Avaliacao> avaliacoes;
-    
+    private boolean concluida;
+
     public Viagem(int vagasDisp, Local partida, Local destino, Motorista motorista, ArrayList<Local> trajeto) {
-        this.vagasDisp = vagasDisp;     
+        this.vagasDisp = vagasDisp;
         this.partida = partida;
         this.destino = destino;
         this.motorista = motorista;
         this.trajeto = trajeto;
-        passageiros = new ArrayList<>();
+        passageirosPendentes = new ArrayList<>();
+        passageirosConfirmados = new ArrayList<>();
         avaliacoes = new ArrayList<>();
+        concluida = false;
     }
-	
-	//ver com o professor se pode usar o .size para medir o tamanho do ArrayList (o length só funciona em array fixo)
-    public void adicionaPassageiro(Passageiro passageiro) {
-        if (passageiros.size() < vagasDisp) {
-            passageiros.add(passageiro);
-        }
-    }
-    
+
     public boolean estaContido(Local local) {
         double raio = 2.0;
-        
+
         for(Local ponto : trajeto) {
             if(ponto.distancia(local) <= raio) {
                 return true;
@@ -45,15 +42,43 @@ public class Viagem {
         return false;
     }
 
+    public ArrayList<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
     public String resumoViagem() {
         return
                 "Motorista: " + motorista.getNome() +  "\n" +
-                "Partida: " + partida.getNome() + "\n" +
-                "Destino: " + destino.getNome() + "\n" +
-                "Vagas Disponíveis: " + vagasDisp;
+                        "Partida: " + partida.getNome() + "\n" +
+                        "Destino: " + destino.getNome() + "\n" +
+                        "Vagas Disponíveis: " + vagasDisp;
+    }
+
+
+    public void solicitarCarona(Passageiro passageiro) {
+        passageirosPendentes.add(passageiro);
+        System.out.println("\nSolicitação enviada ao motorista!\n");
+    }
+
+    public void aceitarPassageiro(Passageiro passageiro) {
+        if (vagasDisp <= 0) {
+            System.out.println("\nNão há vagas disponíveis.\n");
+            return;
+        }
+        passageirosPendentes.remove(passageiro);
+        passageirosConfirmados.add(passageiro);
+        vagasDisp--;
+        System.out.println("\nPassageiro aceito com sucesso!\n");
+    }
+
+    public void rejeitarPassageiro(Passageiro passageiro) {
+        passageirosPendentes.remove(passageiro);
+        System.out.println("\nSolicitação rejeitada.\n");
     }
 
     
+
+
     public Local getDestino() {
         return destino;
     }
@@ -65,5 +90,26 @@ public class Viagem {
     public int getVagasDisp() {
         return vagasDisp;
     }
+
+    public ArrayList<Passageiro> getPassageirosPendentes() {
+        return passageirosPendentes;
+    }
+
+    public ArrayList<Passageiro> getPassageirosConfirmados() {
+        return passageirosConfirmados;
+    }
+
+    public void setConcluida(boolean concluida) {
+        this.concluida = concluida;
+    }
+
+    public boolean getConcluida() {
+        return concluida;
+    }
+    
+    
+
+
 }
+
 

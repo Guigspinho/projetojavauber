@@ -22,7 +22,7 @@ public class Usuario {
         this.telefone = telefone;
     }
 
-    
+
 
     public String getEmail() {
         return email;
@@ -36,4 +36,4 @@ public class Usuario {
         return nome;
     }
 }
-    
+

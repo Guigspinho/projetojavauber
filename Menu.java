@@ -1,3 +1,9 @@
+/*
+Participantes
+Nome: Guilherme Gomes Pinho - RA: 10755529
+Nome: Lukas Barone Sussa - RA: 10753291
+Nome: Ryan Silva de Sousa - RA: 10757255
+*/
 import java.util.Scanner;
 
 public class Menu {
@@ -6,12 +12,14 @@ public class Menu {
     private GerenciadorViagem gerViagens;
 
     public Menu(GerenciadorUsuario gerUsuarios, GerenciadorViagem gerViagens) {
-         this.gerUsuarios = gerUsuarios;
-         this.gerViagens = gerViagens;
+
+        this.gerUsuarios = gerUsuarios;
+        this.gerViagens = gerViagens;
     }
-    
+
     public void exibirMenuEntrada() {
-        int selecao_menu;
+        int selecaoMenu;
+
         do {
             System.out.println("=== CarONE-M: Viagens compartilhadas ===");
             System.out.println("1. Cadastrar uma Conta");
@@ -19,17 +27,20 @@ public class Menu {
             System.out.println("3. Sair");
             System.out.println("========================================");
             System.out.print("Selecione uma opção: ");
+
             while (entrada.hasNextInt() == false) {
                 System.out.println("Opção inválida. Digite um número de 1 a 3.");
                 entrada.next();
             }
-            selecao_menu = entrada.nextInt();
+            selecaoMenu = entrada.nextInt();
             entrada.nextLine();
 
-            switch (selecao_menu) {
+            switch (selecaoMenu) {
+
                 case 1:
                     gerUsuarios.cadastrarConta(entrada);
                     break;
+
                 case 2:
                     System.out.println("1 - Passageiro | 2 - Motorista");
                     int tipo = entrada.nextInt();
@@ -45,21 +56,27 @@ public class Menu {
                             exibirMenuMotorista(entrada, motoristaLogado);
                         }
                     } else {
-                        System.out.println("Tipo de conta inválido. Tente novamente.\n");
+                        System.out.println(
+                                "Tipo de conta inválido. Tente novamente.\n"
+                        );
                     }
                     break;
+
                 case 3:
                     System.out.println("Saindo...");
-                    break;                  
+                    break;
+
                 default:
                     System.out.println("Opção inválida. Tente novamente.\n");
             }
 
-        } while (selecao_menu != 3);
+        } while (selecaoMenu != 3);
     }
-    
+
+
+
     public void exibirMenuPassageiro(Scanner entrada, Passageiro passageiroLogado) {
-        int selecao_menu;
+        int selecaoMenu;
         do {
             System.out.println("=== CarONE-M: Viagens compartilhadas (Passageiro) ===");
             System.out.println("1. Buscar Carona");
@@ -71,61 +88,78 @@ public class Menu {
                 System.out.println("Opção inválida. Digite um número de 1 a 3.");
                 entrada.next();
             }
-            selecao_menu = entrada.nextInt();
+            selecaoMenu = entrada.nextInt();
             entrada.nextLine();
 
-            switch (selecao_menu) {
+            switch (selecaoMenu) {
                 case 1:
-                    gerViagens.buscarESelecionarCarona(passageiroLogado, entrada);
+                    gerViagens.selecionarCarona(passageiroLogado,entrada);
                     break;
+
                 case 2:
-                    avaliarViagens(entrada);
+                    passageiroLogado.avaliarViagens(entrada, gerViagens.getViagens());
                     break;
+
                 case 3:
                     System.out.println("Saindo...");
                     break;
+
                 default:
                     System.out.println("Opção inválida. Tente novamente.\n");
             }
-
-        } while (selecao_menu != 3);
+        } while (selecaoMenu != 3);
     }
 
     public void exibirMenuMotorista(Scanner entrada, Motorista motoristaLogado) {
-        int selecao_menu;
+        int selecaoMenu;
         do {
             System.out.println("=== CarONE-M: Viagens compartilhadas (Motorista) ===");
             System.out.println("1. Cadastrar Viagem");
             System.out.println("2. Confirmar Carona");
-            System.out.println("3. Lista de Avaliações dos Passageiros");
-            System.out.println("4. Sair");
+            System.out.println("3. Concluir Viagem");
+            System.out.println("4. Ver Minha Média de Avaliações");
+            System.out.println("5. Lista de Avaliações dos Passageiros");
+            System.out.println("6. Sair");
             System.out.println("=====================================================");
             System.out.print("Selecione uma opção: ");
             while (entrada.hasNextInt() == false) {
-                System.out.println("Opção inválida. Digite um número de 1 a 4.");
+                System.out.println("Opção inválida. Digite um número de 1 a 6.");
                 entrada.next();
             }
-            selecao_menu = entrada.nextInt();
+            selecaoMenu = entrada.nextInt();
             entrada.nextLine();
 
-            switch (selecao_menu) {
+            switch (selecaoMenu) {
                 case 1:
-                    gerViagens.registrarViagem(entrada, motoristaLogado);
+                    gerViagens.registrarViagem(entrada,motoristaLogado);
                     break;
+
                 case 2:
-                    confirmarCarona(entrada);
+                    motoristaLogado.confirmarCarona(entrada);
                     break;
+                
                 case 3:
-                    listaAvaliacoes(entrada);
+                    motoristaLogado.concluirViagem(entrada);
                     break;
+
                 case 4:
+                    double media = gerUsuarios.calcularMediaAvaliacoes(motoristaLogado);
+                    System.out.println("\n=== Sua Média de Avaliações ===");
+                    System.out.printf("Média: %.2f\n\n", media);
+                    break;
+
+                case 5:
+                    gerViagens.listarAvaliacoes(entrada);
+                    break;
+
+                case 6:
                     System.out.println("Saindo...");
                     break;
+
                 default:
                     System.out.println("Opção inválida. Tente novamente.\n");
             }
 
-        } while (selecao_menu != 4);
+        } while (selecaoMenu != 6);
     }
-    
 }
