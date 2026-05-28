@@ -49,7 +49,7 @@ public class GerenciadorViagem {
             entrada.nextLine();
             if (escolha > 0 && escolha <= viagensEncontradas.size()) {
                 Viagem caronaSelecionada = viagensEncontradas.get(escolha - 1);
-                System.out.println("\nCarona confirmada para a viagem:\n" + caronaSelecionada.resumoViagem());
+                System.out.println("\nCarona solicitada para a viagem:\n" + caronaSelecionada.resumoViagem());
                 caronaSelecionada.solicitarCarona(passageiro);
             }
         }

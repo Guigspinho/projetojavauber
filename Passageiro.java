@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class Passageiro extends Usuario {
 
-    public Passageiro(String email, String senha, String nome, String endereço, String telefone) {
-        super(email, senha, nome, endereço, telefone);
+    public Passageiro(String email, String senha, String nome, String endereco, String telefone) {
+        super(email, senha, nome, endereco, telefone);
     }
 
     public ArrayList<Viagem> buscarCarona(Scanner entrada, ArrayList<Viagem> viagens, ArrayList<Local> locais) {

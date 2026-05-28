@@ -29,6 +29,21 @@ public class Main
                     "Rua B",
                     "2222"
         );
+        Motorista m3 = new Motorista(
+                "fernanda@email.com",
+                "123",
+                "Fernanda",
+                "Rua C",
+                "3333"
+        );
+        Motorista m4 = new Motorista(
+                "ricardo@email.com",
+                "123",
+                "Ricardo",
+                "Rua D",
+                "4444"
+        );
+
         Passageiro p1 = new Passageiro(
                     "maria@email.com",
                     "123",
@@ -42,15 +57,35 @@ public class Main
                     "Ana",
                     "Rua D",
                     "4444"
+        ); 
+        Passageiro p3 = new Passageiro(
+                "lucas@email.com",
+                "123",
+                "Lucas",
+                "Rua G",
+                "7777"
         );
+
+        Passageiro p4 = new Passageiro(
+                "juliana@email.com",
+                "123",
+                "Juliana",
+                "Rua H",
+                "8888"
+        );
+
 
         gerUsuarios.getMotoristas().add(m1);
         gerUsuarios.getMotoristas().add(m2);
+        gerUsuarios.getMotoristas().add(m3);
+        gerUsuarios.getMotoristas().add(m4);
 
         gerUsuarios.getPassageiros().add(p1);
         gerUsuarios.getPassageiros().add(p2);
+        gerUsuarios.getPassageiros().add(p3);
+        gerUsuarios.getPassageiros().add(p4);
 
-        ArrayList<Local> trajeto1 = new ArrayList<>();
+        
         Local higienopolis = gerViagens.getLocais().get(0);
         Local republica = gerViagens.getLocais().get(1);
         Local paulista = gerViagens.getLocais().get(2);
@@ -60,11 +95,23 @@ public class Main
         Local aclimacao = gerViagens.getLocais().get(6);
         Local santana = gerViagens.getLocais().get(7);
 
+        ArrayList<Local> trajeto1 = new ArrayList<>();
         trajeto1.add(higienopolis);
         trajeto1.add(republica);
         trajeto1.add(paulista);
         trajeto1.add(paraiso);
         trajeto1.add(vilaMariana);
+
+        ArrayList<Local> trajeto2 = new ArrayList<>();
+        trajeto2.add(santana);
+        trajeto2.add(republica);
+        trajeto2.add(liberdade);
+        trajeto2.add(aclimacao);
+
+        ArrayList<Local> trajeto3 = new ArrayList<>();
+        trajeto3.add(vilaMariana);
+        trajeto3.add(paraiso);
+        trajeto3.add(paulista);
 
         Viagem v1 = new Viagem(
                                 3,
@@ -73,13 +120,58 @@ public class Main
                                 m1,
                                 trajeto1
         );
+        Viagem v2 = new Viagem(
+                2,
+                santana,
+                aclimacao,
+                m2,
+                trajeto2
+        );
+        Viagem v3 = new Viagem(
+                4,
+                vilaMariana,
+                paulista,
+                m3,
+                trajeto3
+        );
 
-         m1.getViagensMotorista().add(v1);
-         gerViagens.getViagens().add(v1);
+        v1.getPassageirosConfirmados().add(p1);
+        v1.getPassageirosConfirmados().add(p2);
+        v2.getPassageirosConfirmados().add(p3);
+        v3.getPassageirosConfirmados().add(p4);
+
+        v1.getPassageirosPendentes().add(p3);
+        v2.getPassageirosPendentes().add(p1);
+
+        v2.setConcluida(true);
+
+        Avaliacao a1 = new Avaliacao(
+                5,
+                "Motorista muito educado e pontual."
+        );
+        Avaliacao a2 = new Avaliacao(
+                4,
+                "Viagem tranquila e confortável."
+        );
+        Avaliacao a3 = new Avaliacao(
+                5,
+                "Excelente experiência!"
+        );
+
+        v1.getAvaliacoes().add(a1);
+        v1.getAvaliacoes().add(a2);
+        v2.getAvaliacoes().add(a3);
+
+        m1.getViagensMotorista().add(v1);
+        m2.getViagensMotorista().add(v2);
+        m3.getViagensMotorista().add(v3);
+
+        gerViagens.getViagens().add(v1);
+        gerViagens.getViagens().add(v2);
+        gerViagens.getViagens().add(v3);
 
 
-
-
+        //Início do Programa
         Menu menu = new Menu(gerUsuarios, gerViagens);
         menu.exibirMenuEntrada();
 
