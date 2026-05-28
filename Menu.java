@@ -116,13 +116,14 @@ public class Menu {
             System.out.println("=== CarONE-M: Viagens compartilhadas (Motorista) ===");
             System.out.println("1. Cadastrar Viagem");
             System.out.println("2. Confirmar Carona");
-            System.out.println("3. Ver Minha Média de Avaliações");
-            System.out.println("4. Lista de Avaliações dos Passageiros");
-            System.out.println("5. Sair");
+            System.out.println("3. Concluir Viagem");
+            System.out.println("4. Ver Minha Média de Avaliações");
+            System.out.println("5. Lista de Avaliações dos Passageiros");
+            System.out.println("6. Sair");
             System.out.println("=====================================================");
             System.out.print("Selecione uma opção: ");
             while (entrada.hasNextInt() == false) {
-                System.out.println("Opção inválida. Digite um número de 1 a 5.");
+                System.out.println("Opção inválida. Digite um número de 1 a 6.");
                 entrada.next();
             }
             selecaoMenu = entrada.nextInt();
@@ -138,16 +139,20 @@ public class Menu {
                     break;
                 
                 case 3:
+                    motoristaLogado.concluirViagem(entrada);
+                    break;
+
+                case 4:
                     double media = gerUsuarios.calcularMediaAvaliacoes(motoristaLogado);
                     System.out.println("\n=== Sua Média de Avaliações ===");
                     System.out.printf("Média: %.2f\n\n", media);
                     break;
 
-                case 4:
+                case 5:
                     gerViagens.listarAvaliacoes(entrada);
                     break;
 
-                case 5:
+                case 6:
                     System.out.println("Saindo...");
                     break;
 
@@ -155,6 +160,6 @@ public class Menu {
                     System.out.println("Opção inválida. Tente novamente.\n");
             }
 
-        } while (selecaoMenu != 5);
+        } while (selecaoMenu != 6);
     }
 }

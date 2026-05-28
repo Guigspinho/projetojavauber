@@ -7,7 +7,7 @@ Nome: Ryan Silva de Sousa - RA: 10757255
 
 import java.util.ArrayList;
 
-public class        Viagem {
+public class Viagem {
 
     private int vagasDisp;
     private Local partida;
@@ -29,23 +29,6 @@ public class        Viagem {
         passageirosConfirmados = new ArrayList<>();
         avaliacoes = new ArrayList<>();
         concluida = false;
-    }
-
-    
-
-    public void listarPassageiros() {
-
-        if (passageirosConfirmados.isEmpty()) {
-
-            System.out.println("\nNenhum passageiro nesta viagem.\n");
-            return;
-        }
-
-        System.out.println("\n=== Passageiros ===");
-
-        for (Passageiro passageiro : passageirosConfirmados) {
-            System.out.println(passageiro.getNome());
-        }
     }
 
     public boolean estaContido(Local local) {
@@ -80,6 +63,7 @@ public class        Viagem {
     public void aceitarPassageiro(Passageiro passageiro) {
         if (vagasDisp <= 0) {
             System.out.println("\nNão há vagas disponíveis.\n");
+            return;
         }
         passageirosPendentes.remove(passageiro);
         passageirosConfirmados.add(passageiro);
