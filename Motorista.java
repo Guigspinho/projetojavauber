@@ -74,4 +74,8 @@ public class Motorista extends Usuario {
         return viagem;
 
     }
+
+    public ArrayList<Viagem> getViagensMotorista() {
+        return viagensMotorista;
+    }
 }

@@ -178,8 +178,9 @@ public class Menu {
 
             System.out.println("1. Cadastrar Viagem");
             System.out.println("2. Confirmar Carona");
-            System.out.println("3. Lista de Avaliações dos Passageiros");
-            System.out.println("4. Sair");
+            System.out.println("3. Ver Minha Média de Avaliações");
+            System.out.println("4. Lista de Avaliações dos Passageiros");
+            System.out.println("5. Sair");
 
             System.out.println(
                     "====================================================="
@@ -190,7 +191,7 @@ public class Menu {
             while (entrada.hasNextInt() == false) {
 
                 System.out.println(
-                        "Opção inválida. Digite um número de 1 a 4."
+                        "Opção inválida. Digite um número de 1 a 5."
                 );
 
                 entrada.next();
@@ -214,13 +215,19 @@ public class Menu {
 
                     confirmarCarona(entrada);
                     break;
-
+                
                 case 3:
+                    double media = gerUsuarios.calcularMediaAvaliacoes(motoristaLogado);
+                    System.out.println("\n=== Sua Média de Avaliações ===");
+                    System.out.printf("Média: %.2f\n\n", media);
+                    break;
+
+                case 4:
 
                     listaAvaliacoes(entrada);
                     break;
 
-                case 4:
+                case 5:
 
                     System.out.println("Saindo...");
                     break;
@@ -232,7 +239,7 @@ public class Menu {
                     );
             }
 
-        } while (selecao_menu != 4);
+        } while (selecao_menu != 5);
     }
 
     public void avaliarViagens(Scanner entrada) {
