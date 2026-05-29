@@ -43,6 +43,10 @@ public class Menu {
 
                 case 2:
                     System.out.println("1 - Passageiro | 2 - Motorista");
+                    while (entrada.hasNextInt() == false) {
+                        System.out.println("Opção inválida. Digite 1 ou 2.");
+                        entrada.next();
+                    }
                     int tipo = entrada.nextInt();
                     entrada.nextLine();
                     if (tipo == 1) {
@@ -149,7 +153,7 @@ public class Menu {
                     break;
 
                 case 5:
-                    gerViagens.listarAvaliacoes(entrada);
+                    gerViagens.listarAvaliacoes(entrada, motoristaLogado);
                     break;
 
                 case 6:

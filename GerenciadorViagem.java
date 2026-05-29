@@ -56,27 +56,38 @@ public class GerenciadorViagem {
     }
 
 
-    public void listarAvaliacoes(Scanner entrada) {
+    public void listarAvaliacoes(Scanner entrada, Motorista motoristaLogado) {
 
-        if (viagens.isEmpty()) {
-            System.out.println("\nNenhuma viagem cadastrada.\n");
+        ArrayList<Viagem> viagensDoMotorista = new ArrayList<>();
+
+        for (Viagem v : viagens) {
+            if(v.getMotorista().equals(motoristaLogado)) {
+                viagensDoMotorista.add(v);
+            }
+        }
+
+        if (viagensDoMotorista.isEmpty()) {
+            System.out.println("\nVocê ainda não possui viagens cadastradas.\n");
             return;
         }
 
-        System.out.println("\n=== Viagens ===");
-        for (int i = 0; i < viagens.size(); i++) {
 
-            System.out.println((i + 1) + " - " + viagens.get(i).resumoViagem());
+        System.out.println("\n=== Viagens ===");
+        for (int i = 0; i < viagensDoMotorista.size(); i++) {
+
+            System.out.println((i + 1) + " - " + viagensDoMotorista.get(i).resumoViagem());
         }
+
         System.out.print("\nEscolha uma viagem: ");
         int escolha = entrada.nextInt();
         entrada.nextLine();
 
-        if (escolha < 1 || escolha > viagens.size()) {
+        if (escolha < 1 || escolha > viagensDoMotorista.size()) {
             System.out.println("Viagem inválida.");
             return;
         }
 
+        
         if (viagens.get(escolha - 1).getAvaliacoes().isEmpty()) {
             System.out.println("\nNenhuma avaliação cadastrada.\n");
             return;

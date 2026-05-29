@@ -56,6 +56,10 @@ public class Viagem {
 
 
     public void solicitarCarona(Passageiro passageiro) {
+        if (passageiroJaEstaNaViagem(passageiro)) {
+            System.out.println("\nVocê já solicitou ou já faz parte desta viagem.\n");
+            return;
+        }
         passageirosPendentes.add(passageiro);
         System.out.println("\nSolicitação enviada ao motorista!\n");
     }
@@ -76,8 +80,24 @@ public class Viagem {
         System.out.println("\nSolicitação rejeitada.\n");
     }
 
+    private boolean passageiroJaEstaNaViagem(Passageiro passageiro) {
+        for (Passageiro p : passageirosPendentes) {
+            if (p == passageiro) { 
+                return true; 
+            }
+        }
     
+        for (Passageiro p : passageirosConfirmados) {
+            if (p == passageiro) {
+                return true; 
+            }
+        }
+        return false; 
+    }
 
+
+
+    //Getters e Setters
 
     public Local getDestino() {
         return destino;
@@ -107,6 +127,9 @@ public class Viagem {
         return concluida;
     }
     
+    public Motorista getMotorista() {
+        return motorista;
+    }
     
 
 

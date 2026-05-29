@@ -20,6 +20,10 @@ public class Motorista extends Usuario {
         System.out.println("==== Cadastro de Viagem ====\n");
 
         System.out.println("Quantas vagas estão disponíveis?");
+        while (entrada.hasNextInt() == false) {
+                System.out.println("Opção inválida. Utilize números: ");
+                entrada.next();
+            }
         int vagas = entrada.nextInt();
         if (vagas <= 0) {
             System.out.println("Número de vagas inválido! A viagem não pode ser cadastrada.");
@@ -36,6 +40,11 @@ public class Motorista extends Usuario {
 
         int escolhaPartida = entrada.nextInt();
         entrada.nextLine();
+        while (escolhaPartida < 1 || escolhaPartida > locais.size()) {
+            System.out.println("Opção inválida! Escolha um ponto de partida válido:");
+            escolhaPartida = entrada.nextInt();
+            entrada.nextLine();
+        }
         Local partida = locais.get(escolhaPartida - 1);
 
 
@@ -47,6 +56,11 @@ public class Motorista extends Usuario {
 
         int escolhaDestino = entrada.nextInt();
         entrada.nextLine();
+        while (escolhaPartida < 1 || escolhaPartida > locais.size()) {
+            System.out.println("Opção inválida! Escolha um ponto de partida válido:");
+            escolhaPartida = entrada.nextInt();
+            entrada.nextLine();
+        }
         Local destino = locais.get(escolhaDestino - 1);
 
 
@@ -63,6 +77,11 @@ public class Motorista extends Usuario {
             }
             int escolhaPonto = entrada.nextInt();
             entrada.nextLine();
+            while (escolhaPonto < 1 || escolhaPonto > locais.size()) {
+                System.out.println("Opção inválida! Escolha um ponto de partida válido:");
+                escolhaPonto = entrada.nextInt();
+                entrada.nextLine();
+            }
             trajeto.add(locais.get(escolhaPonto - 1));
         }
 
@@ -129,25 +148,33 @@ public class Motorista extends Usuario {
     }
 
     public void concluirViagem(Scanner entrada) {
-        if (viagensMotorista.isEmpty()) {
-            System.out.println("\nNenhuma viagem cadastrada.\n");
+        
+        ArrayList<Viagem> viagensAtivas = new ArrayList<>();
+        for (Viagem viagem : viagensMotorista) {
+            if (viagem.getConcluida() == false) {
+                viagensAtivas.add(viagem);
+            }
+        }     
+
+        if (viagensAtivas.isEmpty()) {
+            System.out.println("\nNenhuma viagem ativa.\n");
             return;
         }
 
         System.out.println("\n=== Suas Viagens ===");
-        for (int i = 0; i < viagensMotorista.size(); i++) {
-            System.out.println((i + 1) + " - \n"+ viagensMotorista.get(i).resumoViagem());
+        for (int i = 0; i < viagensAtivas.size(); i++) {
+            System.out.println((i + 1) + " - \n"+ viagensAtivas.get(i).resumoViagem());
         }
 
         System.out.print("\nEscolha uma viagem: ");
         int escolha = entrada.nextInt();
         entrada.nextLine();
-        if (escolha < 1 || escolha > viagensMotorista.size()) {
+        if (escolha < 1 || escolha > viagensAtivas.size()) {
             System.out.println("Viagem inválida.");
             return;
         }
 
-        Viagem viagemSelecionada = viagensMotorista.get(escolha - 1);
+        Viagem viagemSelecionada = viagensAtivas.get(escolha - 1);
         viagemSelecionada.setConcluida(true);
         System.out.println("\nViagem concluída com sucesso!");
     }

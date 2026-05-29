@@ -114,11 +114,11 @@ public class Main
         trajeto3.add(paulista);
 
         Viagem v1 = new Viagem(
-                                3,
-                                higienopolis,
-                                paulista,
-                                m1,
-                                trajeto1
+                3,
+                higienopolis,
+                paulista,
+                m1,
+                trajeto1
         );
         Viagem v2 = new Viagem(
                 2,
