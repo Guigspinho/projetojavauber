@@ -117,8 +117,8 @@ public class GerenciadorUsuario {
     }
 
     public double calcularMediaAvaliacoes(Motorista motorista) {
-        int soma = 0;
-        int quantidade = 0;
+        double soma = 0;
+        double quantidade = 0;
 
         for (Viagem viagem : motorista.getViagensMotorista()) {
             for (Avaliacao avaliacao : viagem.getAvaliacoes()) {
@@ -130,7 +130,7 @@ public class GerenciadorUsuario {
         if (quantidade == 0) {
             return 0.0;
         }
-        return (double) soma / quantidade;
+        return soma / quantidade;
     }
 
 }
