@@ -24,7 +24,6 @@ public class GerenciadorViagem {
         locais.add(new Local("Liberdade", 2, 3));
         locais.add(new Local("Aclimação", 4, 4));
         locais.add(new Local("Santana", 1, 6));
-
     }
 
     public void registrarViagem(Scanner entrada, Motorista motorista) {
